@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.create(firstName: "Becky", lastName: "Gonzalez", username: "bgonzalez")
+user2 = User.create(firstName: "Samantha", lastName: "Romero", username: "sromero")
+user3 = User.create(firstName: "Zachary", lastName: "Rancho", username: "zrancho")
+
+pet1 = Pet.create(petType: "Exotic", name: "Godzilla",age: 3,user_id: user2.id)
+pet2 = Pet.create(petType: "Cat", name: "Anime", age: 8, user_id: user1.id)
+pet3 = Pet.create(petType: "Dog", name: "Penelope", age: 6, user_id: user3.id)
+pet4 = Pet.create(petType: "Dog", name: "Bailey", age: 6, user_id: user3.id)
+pet5 = Pet.create(petType: "Exotic", name: "Donatello", age: 1, user_id: user2.id)
+
+doctor1 = Doctor.create(name: "Dr. Rita Geigel, VMD", specialty: "General" , location: "Windsor Park Veterinary Clinic")
+doctor2 = Doctor.create(name: "Dr. David Allaman", specialty: "Orthopedic", location: "Windsor Park Veterinary Clinic")
+# doctor3 = Doctor.create(name: "", specialty: "", location: "")
+# doctor4 = Doctor.create(name: "", specialty: "", location: "")
+# doctor5 = Doctor.create(name: "", specialty: "", location: "")
+# doctor6 = Doctor.create(name: "", specialty: "", location: "")
+# doctor7 = Doctor.create(name: "", specialty: "", location: "")
+# doctor8 = Doctor.create(name: "", specialty: "", location: "")
+# doctor9 = Doctor.create(name: "", specialty: "", location: "")
+# doctor10 = Doctor.create(name: "", specialty: "", location: "")

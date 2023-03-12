@@ -30,10 +30,10 @@ class PetsController < ApplicationController
     private
 
     def find_pet
-        pet.find(params[:id])
+        Pet.find(params[:id])
     end
 
     def pet_params
-        params.permit(:petType, :name, :age)
+        params.permit(:petType, :name, :age, :user_id)
     end
 end
