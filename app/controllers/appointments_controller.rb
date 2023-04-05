@@ -1,7 +1,8 @@
 class AppointmentsController < ApplicationController
 
     def index
-        render json: Appointment.all
+        appts = Appointment.all
+        render json: appts
     end
 
     def show
