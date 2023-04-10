@@ -20,5 +20,5 @@ doctor2 = Doctor.create(name: "Dr. David Allaman", specialty: "Orthopedic", loca
 # doctor10 = Doctor.create(name: "", specialty: "", location: "")
 
 
-Appointment.create(pet_id: pet1.id, doctor_id: doctor1.id, title: "Tester", appt_time: DateTime.new(2023,5,3,4,0))
+Appointment.create(pet_id: pet1.id, doctor_id: doctor1.id, appt_time: DateTime.new(2023,5,3,4,0))
 
