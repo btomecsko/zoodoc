@@ -34,6 +34,9 @@ class AppointmentsController < ApplicationController
     end
 
     def appt_params
-        params.permit(:appt_time, :pet_id, :doctor_id)
+        params.permit(:appt_time, :pet_id, :doctor_id, :title)
     end
 end
+
+#appointment.pet.user
+    #if appointment.pet.user_id == @current_user.id
