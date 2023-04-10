@@ -1,6 +1,6 @@
-user1 = User.create(firstName: "Becky", lastName: "Gonzalez", username: "bgonzalez")
-user2 = User.create(firstName: "Samantha", lastName: "Romero", username: "sromero")
-user3 = User.create(firstName: "Zachary", lastName: "Rancho", username: "zrancho")
+user1 = User.create(firstName: "Becky", lastName: "Gonzalez", username: "bgonzalez", password: "pass123")
+user2 = User.create(firstName: "Samantha", lastName: "Romero", username: "sromero", password: "pass456")
+user3 = User.create(firstName: "Zachary", lastName: "Rancho", username: "zrancho", password: "pass789")
 
 pet1 = Pet.create(petType: "Exotic", name: "Godzilla",age: 3,user_id: user2.id)
 pet2 = Pet.create(petType: "Cat", name: "Anime", age: 8, user_id: user1.id)
