@@ -11,20 +11,28 @@ class PetsController < ApplicationController
     end
 
     def create
-        pet = Pet.create!(pet_params)
+        pet = @current_user.pet.create!(pet_params)
         render json: pet, status: :created
     end
     
     def update
         pet = find_pet
-        pet.update(pet_params)
-        render json: pet, status: :accepted
+        if pet.user_id == @current_user.id
+            pet.update(pet_params)
+            render json: pet, status: :accepted
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
     
     def destroy
         pet = find_pet
-        pet.destroy
-        head :no_content
+        if pet.user_id == @current_user.id
+            pet.destroy
+            head :no_content
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
 
     private

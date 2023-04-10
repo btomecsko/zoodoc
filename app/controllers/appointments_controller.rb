@@ -17,14 +17,22 @@ class AppointmentsController < ApplicationController
     
     def update
         appt = find_appt
-        appt.update(appt_params)
-        render json: appt, status: :accepted
+        if appointment.pet.user_id == @current_user.id
+            appt.update(appt_params)
+            render json: appt, status: :accepted
+        else
+            not_authorized
+        end
     end
     
     def destroy
         appt = find_appt
-        appt.destroy
-        head :no_content
+        if appointment.pet.user_id == @current_user.id
+            appt.destroy
+            head :no_content
+        else
+            not_authorized
+        end
     end
 
     private
@@ -35,6 +43,10 @@ class AppointmentsController < ApplicationController
 
     def appt_params
         params.permit(:appt_time, :pet_id, :doctor_id, :title)
+    end
+
+    def not_authorized
+        render json: { errors: ["Not authorized"] }, status: :unauthorized
     end
 end
 
