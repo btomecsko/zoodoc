@@ -9,7 +9,7 @@ const Login = ({ onLogin }) => {
 
   return (
     <Wrapper>
-      <Logo>ZooDoc<sup>3</sup>&frasl;<sub>4</sub></Logo>
+      <Logo>ZooDoc</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} /> 
