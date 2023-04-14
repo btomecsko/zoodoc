@@ -7,6 +7,7 @@
     "node": "16.x"
   },
   "dependencies": {
+    "@redux-devtools/extension": "^3.2.5",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -16,6 +17,7 @@
     "react-router-dom": "^6.10.0",
     "react-scripts": "4.0.3",
     "redux": "^4.2.1",
+    "redux-thunk": "^2.4.2",
     "styled-components": "^5.3.9",
     "web-vitals": "^1.1.2"
   },

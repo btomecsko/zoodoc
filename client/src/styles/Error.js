@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { useSelector } from 'react-redux';
 
-function Error({ children }) {
+const Error = ({ children }) => {
+  const errors = useSelector(store => store.errorsReducer)
+  const errorMessage = errors.map((error, idx) => <Message key={idx}>{ error }</Message>)
   return (
     <Wrapper>
       <Alert>!</Alert>
-      <Message>{children}</Message>
+        { errorMessage }
     </Wrapper>
   );
 }

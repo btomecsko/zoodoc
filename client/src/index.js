@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter as Router } from 'react-router-dom';
-import  { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import {createGlobalStyle} from "styled-components";
 import App from './components/App';
 
-const reducer = () => {
-  return [];
-}
+import './index.css';
+import {createGlobalStyle} from "styled-components";
 
-const store = createStore(reducer)
+import  { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers';
+import { composeWithDevTools } from '@redux-devtools/extension';
+import thunk from 'redux-thunk';
+
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(thunk)
+));
 
 const GlobalStyle = createGlobalStyle`
   *,

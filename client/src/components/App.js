@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Login from "../pages/Login"
-import NavBar from "./NavBar";
+//import NavBar from "./NavBar";
+
+import { loadUser } from '../actions/users';
 
 
 const App = () => {
-  const [user, setUser] = useState(null);
-  const reduxState = useSelector( store => store);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  //const [user, setUser] = useState(null);
+  //const reduxState = useSelector( store => store);
   
-  console.log(reduxState)
+
 
   useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+    dispatch(loadUser(setLoading))
+  }, [dispatch])
 
 
   
-if (!user) return <Login onLogin={setUser} />;
+//if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
-      <NavBar user={setUser} setUser={user} />
-      <main>
+      {
+        loading ? <h1>Loading...</h1> :
         <Routes>
-          <Route></Route>
+          <Route path="/" element={ <Login loading={ loading}/>}/>
         </Routes>
-      </main>
+      }
     </>
   );
 }
