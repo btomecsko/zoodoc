@@ -2,36 +2,29 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Login from "../pages/Login"
+import Login from "../pages/Login";
+import Pets from "../pages/Pets";
 //import NavBar from "./NavBar";
 
 import { loadUser } from '../actions/users';
 
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  const [load, setLoad] = useState(true)
   const dispatch = useDispatch();
-  //const [user, setUser] = useState(null);
-  //const reduxState = useSelector( store => store);
+
   
-
-
   useEffect(() => {
-    dispatch(loadUser(setLoading))
-  }, [dispatch])
+    dispatch(loadUser(setLoad))
+  }, [dispatch]);
 
-
-  
-//if (!user) return <Login onLogin={setUser} />;
+  if (!load) return <Login setLoad={setLoad}/>
 
   return (
     <>
-      {
-        loading ? <h1>Loading...</h1> :
         <Routes>
-          <Route path="/" element={ <Login loading={ loading}/>}/>
+          <Route path="/" element={<Pets />}/>
         </Routes>
-      }
     </>
   );
 }

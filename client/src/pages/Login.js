@@ -4,7 +4,7 @@ import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
 import Button from "../styles/Button";
 
-const Login = ({ onLogin }) => {
+const Login = ({ setLoad }) => {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
@@ -12,7 +12,7 @@ const Login = ({ onLogin }) => {
       <Logo>ZooDoc</Logo>
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} /> 
+          <LoginForm setLoad={setLoad} /> 
           <Divider />
           <p>
             Don't have an account? &nbsp;
@@ -23,7 +23,7 @@ const Login = ({ onLogin }) => {
         </>
       ) : (
         <>
-          <SignUpForm onLogin={onLogin} />
+          <SignUpForm setLoad={setLoad} />
           <Divider />
           <p>
             Already have an account? &nbsp;

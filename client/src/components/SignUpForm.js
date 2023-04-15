@@ -1,43 +1,28 @@
 import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
+
+import {signUpUser} from '../actions/users';
+
 import Button from "../styles/Button"; 
-import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm({ setLoad }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [errors, setErrors] = useState([]);
+  //const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([]);
     setIsLoading(true);
-    fetch("/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        username,
-        password,
-        password_confirmation: passwordConfirmation,
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
+    const user = { firstName, lastName, username, password }
+    dispatch(signUpUser(user, setLoad))
   }
 
   return (
@@ -83,22 +68,7 @@ function SignUpForm({ onLogin }) {
         />
       </FormField>
       <FormField>
-        <Label htmlFor="password">Password Confirmation</Label>
-        <Input
-          type="password"
-          id="password_confirmation"
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-          autoComplete="current-password"
-        />
-      </FormField>
-      <FormField>
         <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
-      </FormField>
-      <FormField>
-        {errors.map((err) => (
-          <Error key={err}>{err}</Error>
-        ))}
       </FormField>
     </form>
   );
