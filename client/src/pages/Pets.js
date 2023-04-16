@@ -4,11 +4,14 @@ import styled from "styled-components";
 //import { useSelector } from "react-redux";
 
 const Pets = () => {
-  //const pets = useSelector((store) => store.petsReducer);
+  //const {user} = useSelector(store => store.usersReducer)
+  //console.log(user)
+
+  //const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={pet}/>)
 
   return (
     <Wrapper>
-      <Logo>Library</Logo>
+      <Logo>My Pet Family</Logo>
       <CardContainer>
         {}
       </CardContainer>

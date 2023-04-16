@@ -23,6 +23,7 @@ const NavBar = ({setLoad}) => {
       <Nav>
         <Button as={Link} to="/">Home</Button>
         <Button as={Link} to="/doctors">Doctors</Button>
+        <Button as={Link} to="/my_pets">Pets</Button>
         <Button variant="outline" onClick={handleLogoutClick}>
         Logout
         </Button>

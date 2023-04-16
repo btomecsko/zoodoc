@@ -4,11 +4,11 @@ import DoctorCard from "../components/DoctorCard";
 import { useSelector } from "react-redux";
 
 const Doctors = () => {
-  const doctors = useSelector((store) => store.doctorsReducer);
+  const {doctors} = useSelector((store) => store.doctorsReducer);
 
   console.log(doctors)
 
-  const doctorCard = doctors.map((doctors, idx) => <DoctorCard key={idx} doctors={doctors}/>)
+  const doctorCard = doctors.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
 
   return (
     <Wrapper>

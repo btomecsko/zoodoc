@@ -1,5 +1,7 @@
 class PetsController < ApplicationController
 
+    skip_before_action :authorize, only: [:index, :show]
+
     def index
         pets = Pet.all
         render json: pets, include: :appointments
@@ -7,11 +9,7 @@ class PetsController < ApplicationController
 
     def show
         pet = find_pet
-        if pet.user_id == @current_user.id
-            render json: pet, include: :appointments
-        else
-            not_authorized
-        end
+        render json: pet, include: :appointments
     end
 
     def create

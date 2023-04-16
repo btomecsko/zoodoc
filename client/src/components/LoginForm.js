@@ -10,7 +10,7 @@ import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
 const LoginForm = ({ setLoad }) => {
-  const user = useSelector(store => store.usersReducer)
+  const {user} = useSelector(store => store.usersReducer)
   console.log(user) 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
