@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Login from "../pages/Login";
 import Pets from "../pages/Pets";
-//import NavBar from "./NavBar";
+import NavBar from "./NavBar";
 
 import { loadUser } from '../actions/users';
 
@@ -22,9 +22,10 @@ const App = () => {
 
   return (
     <>
-        <Routes>
-          <Route path="/" element={<Pets />}/>
-        </Routes>
+      <NavBar setLoad={setLoad}/>
+      <Routes>
+        <Route path="/" element={<Pets />}/>
+      </Routes>
     </>
   );
 }

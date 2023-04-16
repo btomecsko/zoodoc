@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :appointments
   resources :pets
   resources :doctors, only: [:index, :show]
+  resources :users
   
   post "/signup", to: "users#create"
   get "/me", to: "users#show"
