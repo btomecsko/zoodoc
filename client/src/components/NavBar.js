@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../actions/users';
 
@@ -20,8 +21,8 @@ const NavBar = ({setLoad}) => {
     <Wrapper>
       {/* <Logo> Welcome {user.firstName}!</Logo> */}
       <Nav>
-        {/* <Button as={Link} to="/">Library</Button>
-        <Button as={Link} to="/new"> Conjure a Book</Button> */}
+        <Button as={Link} to="/">Home</Button>
+        <Button as={Link} to="/doctors">Doctors</Button>
         <Button variant="outline" onClick={handleLogoutClick}>
         Logout
         </Button>

@@ -7,7 +7,11 @@ class PetsController < ApplicationController
 
     def show
         pet = find_pet
-        render json: pet, include: :appointments
+        if pet.user_id == @current_user.id
+            render json: pet, include: :appointments
+        else
+            not_authorized
+        end
     end
 
     def create
@@ -21,7 +25,7 @@ class PetsController < ApplicationController
             pet.update(pet_params)
             render json: pet, status: :accepted
         else
-            render json: { errors: ["Not authorized"] }, status: :unauthorized
+            not_authorized
         end
     end
     
@@ -31,7 +35,7 @@ class PetsController < ApplicationController
             pet.destroy
             head :no_content
         else
-            render json: { errors: ["Not authorized"] }, status: :unauthorized
+            not_authorized
         end
     end
 
@@ -43,5 +47,9 @@ class PetsController < ApplicationController
 
     def pet_params
         params.permit(:petType, :name, :age, :user_id)
+    end
+
+    def not_authorized
+        render json: { errors: ["Not authorized"] }, status: :unauthorized
     end
 end
