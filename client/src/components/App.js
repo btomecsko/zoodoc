@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Login from "../pages/Login";
+import Errors from "../styles/Error";
 import Home from "../pages/Home";
 import NavBar from "./NavBar";
 import Doctors from "../pages/Doctors";
@@ -13,23 +14,24 @@ import Pets from "../pages/Pets";
 
 
 
-const App = () => {
-  const [load, setLoad] = useState(true)
+const App = () => {  
   const dispatch = useDispatch();
 
   
   useEffect(() => {
-    dispatch(loadUser(setLoad))
+    dispatch(loadUser())
     dispatch(loadDoctors())
   }, [dispatch]);
 
-  if (!load) return <Login setLoad={setLoad}/>
+
 
   return (
     <>
-      <NavBar setLoad={setLoad}/>
+      <NavBar/>
+      <Errors />
       <Routes>
         <Route path="/" element={<Home />}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="/doctors" element={<Doctors/>}/>
         <Route path="/my_pets" element={<Pets/>}/>
       </Routes>

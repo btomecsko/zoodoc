@@ -1,25 +1,25 @@
 import { setErrors, clearErrors } from "./errors";
 import { headers } from "../Global";
 
-export const loadUser = (setLoad) => {
+export const loadUser = () => {
     return dispatch => {
         fetch("/me")
-        .then(res => res.json())
+        .then(res => {
+            if(res.ok){
+                res.json()
+            }
+        })
         .then(data => {
-            if(!data.errors){
                 const action = {
                     type: "LOGIN_USER",
                     payload: data
                 }
                 dispatch(action)
-            }else{
-                setLoad(false);
-            }
-        })
+            })
+        }
     }
-}
 
-export const loginUser = (user, setLoad) => {
+export const loginUser = (user, navigate) => {
     return dispatch => {
         fetch("/login", {
             method: "POST",
@@ -37,13 +37,13 @@ export const loginUser = (user, setLoad) => {
                 }
                 dispatch(action)
                 dispatch(clearErrors())
-                setLoad(true)
+                navigate("/my_pets")
             }
         })
     }
 }
 
-export const signUpUser = (user, setLoad) => {
+export const signUpUser = (user, navigate) => {
     return dispatch => {
         fetch("/signup", {
             method: "POST",
@@ -63,7 +63,7 @@ export const signUpUser = (user, setLoad) => {
                     type: "ADD_USER",
                     payload: data
                 })
-                setLoad(true)
+                navigate("/")
             }
         })
     }

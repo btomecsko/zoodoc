@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
-  #guard clause method useing a before_action filter to only allow wizards that are logged in based on the authorize private method
+  #guard clause method useing a before_action filter to only allow users that are logged in based on the authorize private method
   before_action :authorize
 
   #error handler

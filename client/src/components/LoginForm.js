@@ -1,28 +1,40 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 
+//import { clearErrors } from '../actions/errors';
 import { loginUser } from '../actions/users';
 
 import Button from "../styles/Button"; 
-//import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
-const LoginForm = ({ setLoad }) => {
-  const {user} = useSelector(store => store.usersReducer)
-  console.log(user) 
+const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  //const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   // code here is what happens on mount
+
+  //   if(loading && loggedIn) {
+  //     navigate('/')
+  //   }
+  //   return () => {
+  //     // code here is what happens when the component is unmounting
+  //     dispatch(clearErrors())
+  //   }
+  // }, [loading, loggedIn, navigate, dispatch])
 
   function handleSubmit(e) {
     e.preventDefault();
-    setIsLoading(true);
+    //setIsLoading(true);
     const user = {username, password}
-    dispatch(loginUser(user, setLoad))
+    dispatch(loginUser(user, navigate))
   }
 
   return (
@@ -49,7 +61,7 @@ const LoginForm = ({ setLoad }) => {
       </FormField>
       <FormField>
         <Button variant="fill" color="primary" type="submit">
-          {isLoading ? "Loading..." : "Login"}
+          Login
         </Button>
       </FormField>
     </form>

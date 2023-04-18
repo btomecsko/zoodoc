@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         render json: users, include: :pets
     end
 
-    #GET /users/:id based on the current logged in user
+    #GET /me
     def show
         render json: @current_user, include: :pets
     end

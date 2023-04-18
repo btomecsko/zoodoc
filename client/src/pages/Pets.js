@@ -1,19 +1,19 @@
 import styled from "styled-components";
-//import PetCard from "../components/PetCard";
+import PetCard from "../components/PetCard";
 
-//import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Pets = () => {
-  //const {user} = useSelector(store => store.usersReducer)
-  //console.log(user)
+  const {user} = useSelector(store => store.usersReducer)
+  console.log(user)
 
-  //const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={pet}/>)
+  const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={ pet } user={ user }/>)
 
   return (
     <Wrapper>
       <Logo>My Pet Family</Logo>
       <CardContainer>
-        {}
+        {petCards}
       </CardContainer>
     </Wrapper>
   );

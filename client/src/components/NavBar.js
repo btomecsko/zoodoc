@@ -1,32 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../actions/users';
 
 import styled from "styled-components";
 import Button from "../styles/Button"
 
-const NavBar = ({setLoad}) => {
-
-  //const { user } = useSelector(store => store.usersReducer);
+const NavBar = () => {
+  //const { loggedIn } = useSelector(store => store.usersReducer )
+  const { user } = useSelector((store) => store.usersReducer);
+  
   const dispatch = useDispatch();
 
   const handleLogoutClick = () => {
     fetch("/logout", { method: "DELETE" })
     dispatch(logoutUser());
-    setLoad(false)
+  }
+
+  const loggedInNav = () => {
+    return (
+      <>
+        <Button as={Link} to="/">Home</Button>
+        <Button as={Link} to="/doctors">Doctors</Button>
+        <Button as={Link} to="/my_pets">Pets</Button>
+        <Button variant="outline" as={Link} to="/" onClick={handleLogoutClick}>
+          Logout
+        </Button>
+      </>
+    )
+  }
+
+  const loggedOut = () => {
+    return (
+      <>
+        <Button as={Link} to="/login">Login</Button>
+      </>
+    )
   }
 
   return (
     <Wrapper>
       {/* <Logo> Welcome {user.firstName}!</Logo> */}
       <Nav>
-        <Button as={Link} to="/">Home</Button>
-        <Button as={Link} to="/doctors">Doctors</Button>
-        <Button as={Link} to="/my_pets">Pets</Button>
-        <Button variant="outline" onClick={handleLogoutClick}>
-        Logout
-        </Button>
+      { user ? loggedInNav() : loggedOut() }
       </Nav>
     </Wrapper>
   );
