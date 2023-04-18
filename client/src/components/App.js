@@ -9,7 +9,7 @@ import NavBar from "./NavBar";
 import Doctors from "../pages/Doctors";
 
 import { loadUser } from '../actions/users';
-import { loadDoctors } from "../actions/doctors";
+//import { loadDoctors } from "../actions/doctors";
 import Pets from "../pages/Pets";
 import AddPet from "../pages/AddPet";
 import AddAppt from "../pages/AddAppt";
@@ -18,14 +18,11 @@ import AddAppt from "../pages/AddAppt";
 
 const App = () => {  
   const dispatch = useDispatch();
-
   
   useEffect(() => {
     dispatch(loadUser())
-    dispatch(loadDoctors())
+    //dispatch(loadDoctors())
   }, [dispatch]);
-
-
 
   return (
     <>

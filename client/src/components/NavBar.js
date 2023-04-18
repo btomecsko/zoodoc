@@ -35,7 +35,6 @@ const NavBar = () => {
     return (
       <>
         <Button as={Link} to="/">Home</Button>
-        <Button as={Link} to="/veterinarians">Veterinarians</Button>
         <Button as={Link} to="/login">Login</Button>
       </>
     )

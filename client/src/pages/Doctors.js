@@ -1,42 +1,54 @@
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { loadDoctors } from "../actions/doctors";
+
 import styled from "styled-components";
 import DoctorCard from "../components/DoctorCard";
 
-import { useSelector } from "react-redux";
-
 const Doctors = () => {
+  //const {user} = useSelector((store) => store.usersReducer);
   const {doctors} = useSelector((store) => store.doctorsReducer);
-  const {user} = useSelector((store) => store.usersReducer);
-
+  const dispatch = useDispatch();
+  
   console.log(doctors)
 
-  
-  const loggedInDocs = () => {
-    const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
+  useEffect(() => {
+    dispatch(loadDoctors())
+  }, [dispatch]);
 
-    return (
-      <>
+  const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
+  
+  // const loggedInDocs = () => {
+  //   const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
+
+  //   return (
+  //     <>
+  //     <Logo>Veterinarians</Logo>
+  //     <CardContainer>
+  //       { doctorCard }
+  //     </CardContainer>
+  //     </>
+  //   )
+  // }
+
+  // const loggedOutDocs = () => {
+  //   return (
+  //     <>
+  //     <Logo>Our Veterinarians</Logo>
+  //     <CardContainer>
+  //       <h1>GENERAL INFO</h1>
+  //     </CardContainer>
+  //     </>
+  //   )
+  // }
+
+  return (
+    <Wrapper>
       <Logo>Veterinarians</Logo>
       <CardContainer>
         { doctorCard }
       </CardContainer>
-      </>
-    )
-  }
-
-  const loggedOutDocs = () => {
-    return (
-      <>
-      <Logo>Our Veterinarians</Logo>
-      <CardContainer>
-        <h1>GENERAL INFO</h1>
-      </CardContainer>
-      </>
-    )
-  }
-
-  return (
-    <Wrapper>
-      {user ? loggedInDocs() : loggedOutDocs()}
     </Wrapper>
   );
 };
