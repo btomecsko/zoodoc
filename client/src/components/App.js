@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import Login from "../pages/Login";
-import Errors from "../styles/Error";
+//import Errors from "../styles/Error";
 import Home from "../pages/Home";
 import NavBar from "./NavBar";
 import Doctors from "../pages/Doctors";
@@ -30,11 +30,10 @@ const App = () => {
   return (
     <>
       <NavBar/>
-      <Errors />
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/doctors" element={<Doctors/>}/>
+        <Route path="/veterinarians" element={<Doctors/>}/>
         <Route path="/my_pets" element={<Pets/>}/>
         <Route path="/add_pet" element={<AddPet/>}/>
         <Route path="/schedule_appt" element={<AddAppt/>}/>

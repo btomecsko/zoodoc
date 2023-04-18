@@ -21,7 +21,7 @@ const NavBar = () => {
     return (
       <>
         <Button as={Link} to="/">Home</Button>
-        <Button as={Link} to="/doctors">Doctors</Button>
+        <Button as={Link} to="/veterinarians">Veterinarians</Button>
         <Button as={Link} to="/my_pets">Pets</Button>
         <Button as={Link} to="/schedule_appt">Schedule</Button>
         <Button variant="outline" as={Link} to="/" onClick={handleLogoutClick}>
@@ -35,6 +35,7 @@ const NavBar = () => {
     return (
       <>
         <Button as={Link} to="/">Home</Button>
+        <Button as={Link} to="/veterinarians">Veterinarians</Button>
         <Button as={Link} to="/login">Login</Button>
       </>
     )

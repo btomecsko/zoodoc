@@ -5,17 +5,38 @@ import { useSelector } from "react-redux";
 
 const Doctors = () => {
   const {doctors} = useSelector((store) => store.doctorsReducer);
+  const {user} = useSelector((store) => store.usersReducer);
 
   console.log(doctors)
 
-  const doctorCard = doctors.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
+  
+  const loggedInDocs = () => {
+    const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
 
-  return (
-    <Wrapper>
-      <Logo>Doctors</Logo>
+    return (
+      <>
+      <Logo>Veterinarians</Logo>
       <CardContainer>
         { doctorCard }
       </CardContainer>
+      </>
+    )
+  }
+
+  const loggedOutDocs = () => {
+    return (
+      <>
+      <Logo>Our Veterinarians</Logo>
+      <CardContainer>
+        <h1>GENERAL INFO</h1>
+      </CardContainer>
+      </>
+    )
+  }
+
+  return (
+    <Wrapper>
+      {user ? loggedInDocs() : loggedOutDocs()}
     </Wrapper>
   );
 };
