@@ -12,6 +12,7 @@ import { loadUser } from '../actions/users';
 import { loadDoctors } from "../actions/doctors";
 import Pets from "../pages/Pets";
 import AddPet from "../pages/AddPet";
+import AddAppt from "../pages/AddAppt";
 
 
 
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/doctors" element={<Doctors/>}/>
         <Route path="/my_pets" element={<Pets/>}/>
         <Route path="/add_pet" element={<AddPet/>}/>
+        <Route path="/schedule_appt" element={<AddAppt/>}/>
       </Routes>
     </>
   );
