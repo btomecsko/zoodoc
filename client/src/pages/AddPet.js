@@ -25,6 +25,7 @@ const AddPet = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+    console.log(value)
     setFormData({
       ...formData,
       [name]: value

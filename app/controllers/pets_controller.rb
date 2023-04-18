@@ -13,7 +13,7 @@ class PetsController < ApplicationController
     end
 
     def create
-        pet = @current_user.pet.create!(pet_params)
+        pet = @current_user.pets.create!(pet_params)
         render json: pet, status: :created
     end
     
