@@ -8,5 +8,4 @@ class Pet < ApplicationRecord
   validates :petType, presence: true, inclusion: {in: ["Dog", "Cat", "Exotic", "Pocket", "Avian", "Large Animal"]}
   validates :name, presence: true, length: {in: 5..15}
   validates :age, presence: true, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 30}
-  validates :user_id, presence: true
 end

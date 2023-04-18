@@ -13,7 +13,6 @@ import Label from "../styles/Label";
 //import Textarea from "../styles/TextArea";
 
 const AddPet = () => {
-
   const initialState = {
     name: "",
     petType: "",
@@ -26,7 +25,6 @@ const AddPet = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    console.log(value)
     setFormData({
       ...formData,
       [name]: value
