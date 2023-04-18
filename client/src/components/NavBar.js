@@ -33,6 +33,7 @@ const NavBar = () => {
   const loggedOut = () => {
     return (
       <>
+        <Button as={Link} to="/">Home</Button>
         <Button as={Link} to="/login">Login</Button>
       </>
     )
@@ -68,6 +69,7 @@ const Wrapper = styled.header`
 // `;
 
 const Nav = styled.nav`
+  margin-top: 25px;
   display: flex;
   gap: 4px;
   position: absolute;

@@ -1,7 +1,10 @@
-import styled from "styled-components";
-import PetCard from "../components/PetCard";
-
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+import styled from "styled-components";
+import Button from "../styles/Button"
+
+import PetCard from "../components/PetCard";
 
 const Pets = () => {
   const {user} = useSelector(store => store.usersReducer)
@@ -12,6 +15,7 @@ const Pets = () => {
   return (
     <Wrapper>
       <Logo>My Pet Family</Logo>
+      <Button as={Link} to="/add_pet">Add New Pet</Button>
       <CardContainer>
         {petCards}
       </CardContainer>

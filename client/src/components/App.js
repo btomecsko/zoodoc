@@ -11,6 +11,7 @@ import Doctors from "../pages/Doctors";
 import { loadUser } from '../actions/users';
 import { loadDoctors } from "../actions/doctors";
 import Pets from "../pages/Pets";
+import AddPet from "../pages/AddPet";
 
 
 
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/doctors" element={<Doctors/>}/>
         <Route path="/my_pets" element={<Pets/>}/>
+        <Route path="/add_pet" element={<AddPet/>}/>
       </Routes>
     </>
   );

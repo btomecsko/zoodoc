@@ -63,7 +63,7 @@ export const signUpUser = (user, navigate) => {
                     type: "ADD_USER",
                     payload: data
                 })
-                navigate("/")
+                navigate("/add_pet")
             }
         })
     }
