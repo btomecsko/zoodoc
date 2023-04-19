@@ -6,7 +6,7 @@ import { addPet } from "../actions/pets";
 
 import styled from "styled-components";
 import Button from "../styles/Button";
-import Error from "../styles/Error";
+//import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
@@ -80,9 +80,6 @@ const AddPet = () => {
             <Button color="primary" type="submit">
               Add Pet
             </Button>
-          </FormField>
-          <FormField>
-            <Error />
           </FormField>
         </form>
       </WrapperChild>

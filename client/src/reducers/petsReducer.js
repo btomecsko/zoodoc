@@ -4,8 +4,10 @@ const petsReducer = (state=[], action) => {
     switch(action.type){
         case "ADD_PET":
             return addResource(state, action.payload)
-            default:
-                return state
+        case "DELETE_PET":
+            return state.filter(pet => pet.id !== action.payload);
+        default:
+            return state
     }
 }
 

@@ -1,16 +1,28 @@
+import { useDispatch } from 'react-redux';
+
 import {
     CardWrapper,
     CardTextWrapper,
     CardTextTitle,
     CardTextBody,
     CardBodyWrapper,
+    CardLink,
     // CardOpenWrapper,
     // CardOpen,
     // LinkText
   } from "../styles/Card";
+  import Button from "../styles/Button"
   import styled from "styled-components";
+import { deletePet } from "../actions/pets";
   
-  const PetCard = ({ pet }) => {
+const PetCard = ({ pet }) => {
+
+  const dispatch = useDispatch()
+  
+  const handleDeletePet = () => {
+    dispatch(deletePet(pet.id))
+  }
+
 
     return (
       <Separator>
@@ -28,6 +40,9 @@ import {
               <LinkText onClick={handleOpenBook}>Aberto</LinkText>
             </CardOpen>
           </CardOpenWrapper> */}
+           <CardLink>
+                <Button onClick={handleDeletePet}>Remove Pet</Button>
+            </CardLink>
         </CardWrapper>
       </Separator>
     );

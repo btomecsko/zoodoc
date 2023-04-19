@@ -10,7 +10,7 @@ export const addPet = (formData, navigate) => {
         },
         body: JSON.stringify(formData)
       })
-        .then(resp => resp.json())
+        .then(res => res.json())
         .then(data => {
           if(data.errors) {
             dispatch(setErrors(data.errors));
@@ -26,5 +26,24 @@ export const addPet = (formData, navigate) => {
             navigate('/my_pets');
           }
         });
+    }
+  }
+
+  export const deletePet = (id) => {
+    return dispatch => {
+      fetch(`/pets/${ id }`, {
+        method: "DELETE",
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+        .then(res => {
+          if (res.ok) {
+            dispatch({
+              type: "DELETE_PET",
+              payload: id
+            })
+          }
+        })
     }
   }
