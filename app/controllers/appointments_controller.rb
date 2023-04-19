@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
-
+    skip_before_action :authorize, only: [:index, :show, :create]
+    
     def index
         appts = Appointment.all
         render json: appts

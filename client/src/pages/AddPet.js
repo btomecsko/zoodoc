@@ -16,7 +16,7 @@ const AddPet = () => {
   const initialState = {
     name: "",
     petType: "",
-    age: 0
+    age: ""
   }  
   const [ formData, setFormData ] = useState(initialState);
 
@@ -32,7 +32,7 @@ const AddPet = () => {
     })
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(addPet(formData, navigate))
   }

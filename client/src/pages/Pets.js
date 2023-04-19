@@ -10,7 +10,7 @@ const Pets = () => {
   const {user} = useSelector(store => store.usersReducer)
   console.log(user)
 
-  const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={ pet } user={ user }/>)
+  const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={ pet }/>)
 
   return (
     <Wrapper>
