@@ -40,8 +40,8 @@ const Login = () => {
 const Logo = styled.h1`
   font-family: "Permanent Marker";
   font-size: 3rem;
-  color: #740001;
-  border-color: black;
+  color: #5D3FD3;
+  text-shadow: 2px 2px #CD7F32;
   margin: 8px 0 16px;
   text-align: center;
 `;
@@ -50,11 +50,13 @@ const Wrapper = styled.section`
   max-width: 400px;
   margin: 100px auto;
   padding: 16px;
+  border: double #CD7F32;
+  border-radius: 5px;
 `;
 
 const Divider = styled.hr`
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CD7F32;
   margin: 16px 0;
 `;
 

@@ -41,7 +41,7 @@ const PetCard = ({ pet }) => {
             </CardOpen>
           </CardOpenWrapper> */}
            <CardLink>
-                <Button onClick={handleDeletePet}>Remove Pet</Button>
+                <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
             </CardLink>
         </CardWrapper>
       </Separator>

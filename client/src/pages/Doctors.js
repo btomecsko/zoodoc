@@ -61,7 +61,7 @@ const Wrapper = styled.section`
 const Logo = styled.h1`
   font-family: "Permanent Marker";
   font-size: 3rem;
-  color: #740001;
+  color: #5D3FD3;
   border-color: #d3a625;
   margin: 8px 0 16px;
   text-align: center;

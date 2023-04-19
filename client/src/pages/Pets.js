@@ -24,15 +24,14 @@ const Pets = () => {
 };
 
 const Wrapper = styled.section`
-  max-width: 1000px;
+  max-width: 80%;
   margin: 40px auto;
 `;
 
 const Logo = styled.h1`
   font-family: "Permanent Marker";
   font-size: 3rem;
-  color: #740001;
-  border-color: #d3a625;
+  color: #CD7F32;
   margin: 8px 0 16px;
   text-align: center;
 `;

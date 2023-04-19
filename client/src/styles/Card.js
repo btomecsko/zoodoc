@@ -5,8 +5,9 @@ export const CardWrapper = styled.div`
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
   grid-template-areas: "text" "body" "open";
+  border: 3px double #CD7F32;
   border-radius: 18px;
-  background: #946b2d;
+  background: #5D3FD3;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
   text-align: center;
 `;
