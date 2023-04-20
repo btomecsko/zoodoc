@@ -1,5 +1,21 @@
 import { setErrors } from "./errors";
 
+export const loadPet = (id) => {
+  return dispatch => {
+    fetch(`/pets/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      if(!data.errors){
+        const action = {
+          type: "LOAD_PET",
+          payload: data
+        }
+        dispatch(action);
+      }
+    })
+  }
+}
+
 export const addPet = (formData, navigate) => {
     return dispatch => {
       fetch('/pets', {

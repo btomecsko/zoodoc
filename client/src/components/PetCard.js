@@ -42,7 +42,7 @@ const PetCard = ({ pet }) => {
             </CardOpen>
           </CardOpenWrapper> */}
            <CardLink>
-                <Button variant="outline" as={Link} to={`/pets/${ pet.name }`}>View Profile</Button>
+                <Button variant="outline" as={Link} to={`/pets/${ pet.id }`}>View Profile</Button>
             </CardLink>
         </CardWrapper>
       </Separator>

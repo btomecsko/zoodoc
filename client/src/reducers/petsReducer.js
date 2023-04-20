@@ -1,7 +1,16 @@
 import { addResource } from "../Global";
 
-const petsReducer = (state=[], action) => {
+const initialState = {
+    pets: []
+}
+
+const petsReducer = (state=initialState, action) => {
     switch(action.type){
+        case "LOAD_PET":
+            return {
+                ...state,
+                pets: action.payload
+            }
         case "ADD_PET":
             return addResource(state, action.payload)
         case "DELETE_PET":
