@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users, include: :pets
+        render json: users
     end
 
     #GET /me
     def show
-        render json: @current_user, include: :pets
+        render json: @current_user
     end
 
     #POST /users to create new users

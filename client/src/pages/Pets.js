@@ -7,10 +7,10 @@ import Button from "../styles/Button"
 import PetCard from "../components/PetCard";
 
 const Pets = () => {
-  const {user} = useSelector(store => store.usersReducer)
-  console.log(user)
+  const {pets} = useSelector(store => store.usersReducer)
+  console.log(pets)
 
-  const petCards = user.pets?.map(pet => <PetCard key={pet.id} pet={ pet }/>)
+  const petCards = pets.map(pet => <PetCard key={pet.id} pet={ pet }/>)
 
   return (
     <Wrapper>

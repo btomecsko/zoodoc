@@ -6,15 +6,17 @@ export const loadUser = () => {
         fetch("/me")
         .then(res => {
             if(res.ok){
-                res.json()
+                return res.json()
             }
         })
         .then(data => {
+            if (data){
                 const action = {
                     type: "LOGIN_USER",
                     payload: data
                 }
                 dispatch(action)
+            }
             })
         }
     }

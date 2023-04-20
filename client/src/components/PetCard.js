@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 
 import {
     CardWrapper,
@@ -13,15 +13,16 @@ import {
   } from "../styles/Card";
   import Button from "../styles/Button"
   import styled from "styled-components";
-import { deletePet } from "../actions/pets";
+import { Link } from "react-router-dom";
+//import { deletePet } from "../actions/pets";
   
 const PetCard = ({ pet }) => {
 
-  const dispatch = useDispatch()
+  //const dispatch = useDispatch()
   
-  const handleDeletePet = () => {
-    dispatch(deletePet(pet.id))
-  }
+  // const handleDeletePet = () => {
+  //   dispatch(deletePet(pet.id))
+  // }
 
 
     return (
@@ -41,7 +42,7 @@ const PetCard = ({ pet }) => {
             </CardOpen>
           </CardOpenWrapper> */}
            <CardLink>
-                <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
+                <Button variant="outline" as={Link} to={`/pets/${ pet.name }`}>View Profile</Button>
             </CardLink>
         </CardWrapper>
       </Separator>
