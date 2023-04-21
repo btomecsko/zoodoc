@@ -1,16 +1,25 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
 import Button from "../styles/Button"
 
 import PetCard from "../components/PetCard";
+import { useEffect } from "react";
+import { loadUser } from "../actions/users";
 
 const Pets = () => {
   const {pets} = useSelector(store => store.usersReducer)
   console.log(pets)
 
+  const dispatch = useDispatch();
+
   const petCards = pets.map(pet => <PetCard key={pet.id} pet={ pet }/>)
+
+  useEffect(() => {
+    // dispatch the loadUser action when the component mounts or updates
+    dispatch(loadUser());
+  }, [dispatch]);
 
   return (
     <Wrapper>

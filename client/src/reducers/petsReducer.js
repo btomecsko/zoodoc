@@ -12,8 +12,9 @@ const petsReducer = (state=initialState, action) => {
                 pets: action.payload
             }
         case "ADD_PET":
-            return addResource(state, action.payload)
+            return addResource(state=[], action.payload)
         case "DELETE_PET":
+            state=[]
             return state.filter(pet => pet.id !== action.payload);
         default:
             return state

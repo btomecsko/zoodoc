@@ -7,7 +7,6 @@ import styled from "styled-components";
 import Button from "../styles/Button"
 
 const NavBar = () => {
-  //const { loggedIn } = useSelector(store => store.usersReducer )
   const { user } = useSelector((store) => store.usersReducer);
   
   const dispatch = useDispatch();
@@ -21,8 +20,8 @@ const NavBar = () => {
     return (
       <>
         <Button as={Link} to="/">Home</Button>
+        <Button as={Link} to="/my_pets">My Pets</Button>
         <Button as={Link} to="/veterinarians">Veterinarians</Button>
-        <Button as={Link} to="/my_pets">Pets</Button>
         <Button as={Link} to="/schedule_appt">Schedule</Button>
         <Button variant="outline" as={Link} to="/" onClick={handleLogoutClick}>
           Logout
@@ -42,7 +41,6 @@ const NavBar = () => {
 
   return (
     <Wrapper>
-      {/* <Logo> Welcome {user.firstName}!</Logo> */}
       <Nav>
       { user ? loggedInNav() : loggedOut() }
       </Nav>
@@ -53,28 +51,15 @@ const NavBar = () => {
 const Wrapper = styled.header`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   padding: 8px;
 `;
 
-// const Logo = styled.h1`
-//   font-family: "Permanent Marker";
-//   font-size: 3rem;
-//   color: #d3a625;
-//   margin-top: 10px;
-//   line-height: 1;
-//   a {
-//     color: inherit;
-//     text-decoration: none;
-//   }
-// `;
-
 const Nav = styled.nav`
-  margin-top: 25px;
   display: flex;
   gap: 4px;
   position: absolute;
-  right: 8px;
+  right: 10px;
 `;
 
 export default NavBar;
