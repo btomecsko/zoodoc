@@ -2,7 +2,14 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
 import styled from "styled-components";
-import Profile from "../styles/Profile";
+import { 
+    ProfileBodyTitle,
+    ProfileBodyWrapper,
+    ProfileTextBody,
+    ProfileTextWrapper, 
+    ProfileUpdate, 
+    ProfileWrapper 
+} from "../styles/Profile";
 import { useEffect } from "react";
 import { deletePet, loadPet } from "../actions/pets";
 import Button from "../styles/Button";
@@ -19,26 +26,28 @@ const PetProfile = () => {
       const handleDeletePet = () => {
         dispatch(deletePet(id))
       }
-    const petAppt = pets.appointments?.map(appt => <li key={appt.id}>{appt.date_format}</li>)
+    const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format}</ProfileTextBody>)
     
     return(
         <Wrapper>
             <Logo>{pets.name}</Logo>
-            <Profile>
-                <ul>
-                    <li>{pets.petType}</li>
-                    <li>{pets.age} years old</li>
+            <ProfileWrapper>
+                <ProfileTextWrapper>{pets.petType} <br/> {pets.age} years old</ProfileTextWrapper>
+                <ProfileBodyWrapper>
+                    <ProfileBodyTitle>List of Appointments</ProfileBodyTitle>
                     {petAppt}
-                </ul>
+                </ProfileBodyWrapper>
+                <ProfileUpdate>
                 <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
-            </Profile>
+                </ProfileUpdate>
+            </ProfileWrapper>
         </Wrapper>
     )
 
 }
 
 const Wrapper = styled.section`
-  max-width: 1000px;
+  max-width: 700px;
   margin: 40px auto;
 `;
 

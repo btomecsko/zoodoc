@@ -1,14 +1,12 @@
 import { useDispatch } from 'react-redux';
 
 import {
-    CardWrapper,
+    PhotoWrapper,
+    CardImage,
     CardTextWrapper,
     CardTextTitle,
-    CardBodyWrapper,
     CardLink,
-    // CardOpenWrapper,
-    // CardOpen,
-    // LinkText
+    CardLinkWrapper
   } from "../styles/Card";
   import Button from "../styles/Button"
   import styled from "styled-components";
@@ -26,22 +24,20 @@ const PetCard = ({ pet }) => {
 
     return (
       <Separator>
-        <CardWrapper>
+        <PhotoWrapper>
+          <CardImage background={pet.image}/>
           <CardTextWrapper>
             <CardTextTitle>{ pet.name }</CardTextTitle>
           </CardTextWrapper>
-          <CardBodyWrapper>
-          </CardBodyWrapper>
-          {/* <CardOpenWrapper>
-            <CardOpen>
-              <LinkText onClick={handleOpenBook}>Aberto</LinkText>
-            </CardOpen>
-          </CardOpenWrapper> */}
-           <CardLink>
+           <CardLinkWrapper>
+                <CardLink>
                 <Button variant="outline" as={Link} to={`/pets/${ pet.id }`}>View Profile</Button>
+                </CardLink>
+                <CardLink>
                 <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
-            </CardLink>
-        </CardWrapper>
+                </CardLink>
+            </CardLinkWrapper>
+        </PhotoWrapper>
       </Separator>
     );
   }

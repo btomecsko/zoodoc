@@ -1,12 +1,8 @@
 import {
-    CardWrapper,
-    CardTextWrapper,
-    CardTextTitle,
-    CardTextBody,
-    CardBodyWrapper,
-    // CardOpenWrapper,
-    // CardOpen,
-    // LinkText
+  PhotoWrapper,
+  CardImage,
+  CardTextWrapper,
+  CardTextTitle
   } from "../styles/Card";
   import styled from "styled-components";
   
@@ -14,21 +10,13 @@ import {
 
     return (
       <Separator>
-        <CardWrapper>
+        <PhotoWrapper>
+        <CardImage background={doctors.image}/>
           <CardTextWrapper>
             <CardTextTitle>{ doctors.name }</CardTextTitle>
+            <CardTextTitle>{ doctors.specialty }</CardTextTitle>
           </CardTextWrapper>
-          <CardBodyWrapper>
-            <CardTextBody>
-              {doctors.specialty}
-            </CardTextBody>
-          </CardBodyWrapper>
-          {/* <CardOpenWrapper>
-            <CardOpen>
-              <LinkText onClick={handleOpenBook}>Aberto</LinkText>
-            </CardOpen>
-          </CardOpenWrapper> */}
-        </CardWrapper>
+        </PhotoWrapper>
       </Separator>
     );
   }
