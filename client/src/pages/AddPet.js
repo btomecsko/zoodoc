@@ -16,7 +16,8 @@ const AddPet = () => {
   const initialState = {
     name: "",
     petType: "",
-    age: ""
+    age: "",
+    image: ""
   }  
   const [ formData, setFormData ] = useState(initialState);
 
@@ -60,6 +61,17 @@ const AddPet = () => {
               name="age"
               id="age"
               value={ formData.age }
+              onChange={ handleChange }
+              required
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="image">Pet Pic</Label>
+            <Input
+              type="text"
+              name="image"
+              id="image"
+              value={ formData.image }
               onChange={ handleChange }
               required
             />

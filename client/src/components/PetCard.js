@@ -4,7 +4,6 @@ import {
     CardWrapper,
     CardTextWrapper,
     CardTextTitle,
-    CardTextBody,
     CardBodyWrapper,
     CardLink,
     // CardOpenWrapper,
@@ -32,9 +31,6 @@ const PetCard = ({ pet }) => {
             <CardTextTitle>{ pet.name }</CardTextTitle>
           </CardTextWrapper>
           <CardBodyWrapper>
-            <CardTextBody>
-              {pet.petType}
-            </CardTextBody>
           </CardBodyWrapper>
           {/* <CardOpenWrapper>
             <CardOpen>

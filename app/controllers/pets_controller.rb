@@ -44,7 +44,7 @@ class PetsController < ApplicationController
     end
 
     def pet_params
-        params.permit(:petType, :name, :age, :user_id)
+        params.permit(:petType, :name, :age, :image, :user_id)
     end
 
     def not_authorized
