@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from "styled-components";
 import Profile from "../styles/Profile";
 import { useEffect } from "react";
-import { loadPet } from "../actions/pets";
+import { deletePet, loadPet } from "../actions/pets";
+import Button from "../styles/Button";
 
 const PetProfile = () => {
     const id  = parseInt(useParams().id);
@@ -15,6 +16,9 @@ const PetProfile = () => {
         dispatch(loadPet(id))
       }, [dispatch, id]);
 
+      const handleDeletePet = () => {
+        dispatch(deletePet(id))
+      }
     const petAppt = pets.appointments?.map(appt => <li key={appt.id}>{appt.date_format}</li>)
     
     return(
@@ -22,8 +26,11 @@ const PetProfile = () => {
             <Logo>{pets.name}</Logo>
             <Profile>
                 <ul>
+                    <li>{pets.petType}</li>
+                    <li>{pets.age} years old</li>
                     {petAppt}
                 </ul>
+                <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
             </Profile>
         </Wrapper>
     )
