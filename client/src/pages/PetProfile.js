@@ -11,7 +11,7 @@ import {
     ProfileWrapper 
 } from "../styles/Profile";
 import { useEffect } from "react";
-import { deletePet, loadPet } from "../actions/pets";
+import { updatePet, loadPet } from "../actions/pets";
 import Button from "../styles/Button";
 
 const PetProfile = () => {
@@ -23,10 +23,12 @@ const PetProfile = () => {
         dispatch(loadPet(id))
       }, [dispatch, id]);
 
-      const handleDeletePet = () => {
-        dispatch(deletePet(id))
+      const handleUpdatePet = () => {
+        dispatch(updatePet(id))
       }
     const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format}</ProfileTextBody>)
+
+    console.log(petAppt)
     
     return(
         <Wrapper>
@@ -35,10 +37,10 @@ const PetProfile = () => {
                 <ProfileTextWrapper>{pets.petType} <br/> {pets.age} years old</ProfileTextWrapper>
                 <ProfileBodyWrapper>
                     <ProfileBodyTitle>List of Appointments</ProfileBodyTitle>
-                    {petAppt}
+                    { pets.appointments?.length > 0 ? petAppt : <ProfileTextBody>No Appointments Scheduled</ProfileTextBody> }
                 </ProfileBodyWrapper>
                 <ProfileUpdate>
-                <Button variant="outline" onClick={handleDeletePet}>Remove Pet</Button>
+                <Button variant="outline" onClick={handleUpdatePet}>Update Profile</Button>
                 </ProfileUpdate>
             </ProfileWrapper>
         </Wrapper>

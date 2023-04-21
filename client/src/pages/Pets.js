@@ -15,12 +15,13 @@ const Pets = () => {
   const dispatch = useDispatch();
 
   const petCards = pets.map(pet => <PetCard key={pet.id} pet={ pet }/>)
-
+  
   useEffect(() => {
     // dispatch the loadUser action when the component mounts or updates
     dispatch(loadUser());
   }, [dispatch]);
-
+  
+  
   return (
     <Wrapper>
       <Logo>My Pet Family</Logo>
