@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
 import styled from "styled-components";
@@ -11,21 +11,19 @@ import {
     ProfileWrapper 
 } from "../styles/Profile";
 import { useEffect } from "react";
-import { updatePet, loadPet } from "../actions/pets";
+import { loadPet } from "../actions/pets";
 import Button from "../styles/Button";
 
 const PetProfile = () => {
     const id  = parseInt(useParams().id);
     const {pets} = useSelector(store => store.petsReducer)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(loadPet(id))
       }, [dispatch, id]);
 
-      const handleUpdatePet = () => {
-        dispatch(updatePet(id))
-      }
     const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format}</ProfileTextBody>)
 
     console.log(petAppt)
@@ -40,7 +38,7 @@ const PetProfile = () => {
                     { pets.appointments?.length > 0 ? petAppt : <ProfileTextBody>No Appointments Scheduled</ProfileTextBody> }
                 </ProfileBodyWrapper>
                 <ProfileUpdate>
-                <Button variant="outline" onClick={handleUpdatePet}>Update Profile</Button>
+                <Button variant="outline" onClick={() => navigate(`/pets/${ id }/edit`)}>Edit Profile</Button>
                 </ProfileUpdate>
             </ProfileWrapper>
         </Wrapper>

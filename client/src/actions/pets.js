@@ -1,4 +1,5 @@
 import { setErrors } from "./errors";
+import { headers } from "../Global";
 
 export const loadPet = (id) => {
   return dispatch => {
@@ -42,6 +43,26 @@ export const addPet = (formData, navigate) => {
             navigate('/my_pets');
           }
         });
+    }
+  }
+
+  export const editPet = (id, formData, navigate) => {
+    return dispatch => {
+      fetch(`/pets/${id}`, {
+        method: "PATCH",
+        headers,
+        body: JSON.stringify(formData)
+      })
+        .then(resp => resp.json())
+        .then(data => {
+          // dispatch an action for editing our blog
+          const action = {
+            type: "EDIT_PETS",
+            payload: data
+          }
+          dispatch(action);
+          navigate(`/pets/${id}`)
+        })
     }
   }
 

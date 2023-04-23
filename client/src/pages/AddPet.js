@@ -10,7 +10,6 @@ import Button from "../styles/Button";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
-//import Textarea from "../styles/TextArea";
 
 const AddPet = () => {
   const initialState = {

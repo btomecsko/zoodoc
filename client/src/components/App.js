@@ -13,6 +13,7 @@ import Pets from "../pages/Pets";
 import AddPet from "../pages/AddPet";
 import AddAppt from "../pages/AddAppt";
 import PetProfile from "../pages/PetProfile";
+import EditPet from "../pages/EditPet";
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/veterinarians" element={<Doctors/>}/>
         <Route path="/my_pets" element={<Pets/>}/>
         <Route path="/pets/:id" element={ <PetProfile /> } />
+        <Route path="/pets/:id/edit" element={ <EditPet /> } />
         <Route path="/add_pet" element={<AddPet/>}/>
         <Route path="/schedule_appt" element={<AddAppt/>}/>
       </Routes>
