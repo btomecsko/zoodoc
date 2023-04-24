@@ -20,6 +20,11 @@ const usersReducer = (state=intialState, action) => {
                 ...state,
                 user: null
             }
+        case "DELETE_PET":
+            return {
+                ...state,
+                pets: state.pets.filter(pet => pet.id !== action.payload),
+            };
             default:
                 return state;
     }

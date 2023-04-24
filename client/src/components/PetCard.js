@@ -17,7 +17,7 @@ const PetCard = ({ pet }) => {
   const dispatch = useDispatch();
   
   const handleDeletePet = () => {
-    dispatch(deletePet(pet.id))
+    dispatch(deletePet(pet.id));
   }
 
     return (
