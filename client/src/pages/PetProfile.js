@@ -24,7 +24,7 @@ const PetProfile = () => {
         dispatch(loadPet(id))
       }, [dispatch, id]);
 
-    const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format}</ProfileTextBody>)
+    const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format} with {appt.doctor.name}</ProfileTextBody>)
     
     return(
         <Wrapper>
