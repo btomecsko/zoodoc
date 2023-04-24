@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addPet } from "../actions/pets";
+import { clearErrors } from "../actions/errors";
 
 import styled from "styled-components";
 import Button from "../styles/Button";
-//import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
-const AddPet = () => {
+
+const AddPet = ({loading}) => {
   const initialState = {
     name: "",
     petType: "",
@@ -19,9 +20,19 @@ const AddPet = () => {
     image: ""
   }  
   const [ formData, setFormData ] = useState(initialState);
+  const { loggedIn } = useSelector(store => store.usersReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!loading && !loggedIn) {
+      navigate("/login");
+    }
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [loading, loggedIn, navigate, dispatch]);
 
   const handleChange = e => {
     const { name, value } = e.target;

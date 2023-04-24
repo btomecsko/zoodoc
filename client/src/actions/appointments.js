@@ -15,13 +15,10 @@ export const addAppt = (formData, navigate) => {
           if(data.errors) {
             dispatch(setErrors(data.errors));
           } else {
-            // addBlog(data)
-            // dispatch to BlogsReducer for adding a blog
             const action = {
               type: "ADD_APPT",
               payload: data
             }
-            
             dispatch(action);
             navigate('/my_pets');
           }

@@ -1,40 +1,37 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-//import { clearErrors } from '../actions/errors';
-import { loginUser } from '../actions/users';
+import { clearErrors } from "../actions/errors";
+import { loginUser } from "../actions/users";
 
-import Button from "../styles/Button"; 
+import Button from "../styles/Button";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
-const LoginForm = () => {
+const LoginForm = ({ loading }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  //const [isLoading, setIsLoading] = useState(false);
+  const { loggedIn } = useSelector((store) => store.usersReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   // code here is what happens on mount
-
-  //   if(loading && loggedIn) {
-  //     navigate('/')
-  //   }
-  //   return () => {
-  //     // code here is what happens when the component is unmounting
-  //     dispatch(clearErrors())
-  //   }
-  // }, [loading, loggedIn, navigate, dispatch])
+  useEffect(() => {
+    if (!loading && loggedIn) {
+      navigate("/");
+    }
+    return () => {
+      dispatch(clearErrors());
+    };
+  }, [loading, loggedIn, navigate, dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();
     //setIsLoading(true);
-    const user = {username, password}
-    dispatch(loginUser(user, navigate))
+    const user = { username, password };
+    dispatch(loginUser(user, navigate));
   }
 
   return (
@@ -66,6 +63,6 @@ const LoginForm = () => {
       </FormField>
     </form>
   );
-}
+};
 
 export default LoginForm;

@@ -1,6 +1,7 @@
 const intialState = {
     user: null,
-    pets: []
+    pets: [],
+    loggedIn: false
 }
 
 const usersReducer = (state=intialState, action) => {
@@ -9,7 +10,8 @@ const usersReducer = (state=intialState, action) => {
             return {
                 ...state,
                 user: action.payload, 
-                pets: action.payload.pets
+                pets: action.payload.pets,
+                loggedIn: true
             }
         case "ADD_USER":
             return {
@@ -18,7 +20,8 @@ const usersReducer = (state=intialState, action) => {
         case "LOGOUT_USER":
             return {
                 ...state,
-                user: null
+                user: null,
+                loggedIn: false
             }
         case "DELETE_PET":
             return {

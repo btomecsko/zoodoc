@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux';
 
 const Error = () => {
   const errors = useSelector(store => store.errorsReducer)
-  const errorMessage = errors.map((error, idx) => <Message key={idx}>{ error }</Message>)
+  const errorList = errors.map((error, idx) => <li key={ idx }>{ error }</li>)
   return (
     <Wrapper>
-        { errorMessage }
+    <ul>
+      { errorList }
+    </ul>
     </Wrapper>
-  );
+  )
 }
 
 const Wrapper = styled.div`
@@ -22,8 +24,5 @@ const Wrapper = styled.div`
   margin: 8px 0;
 `;
 
-const Message = styled.p`
-  margin: 0;
-`;
 
 export default Error;

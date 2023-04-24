@@ -4,16 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 import { loadDoctors } from "../actions/doctors";
 import { addAppt } from "../actions/appointments";
+import { clearErrors } from "../actions/errors";
 
 import styled from "styled-components";
 import Button from "../styles/Button";
-//import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 
-const AddAppt = () => {
-  const { pets } = useSelector((store) => store.usersReducer);
+
+const AddAppt = ({loading}) => {
+  const { loggedIn, pets } = useSelector((store) => store.usersReducer);
   const { doctors } = useSelector((store) => store.doctorsReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,8 +26,14 @@ const AddAppt = () => {
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
-    dispatch(loadDoctors());
-  }, [dispatch]);
+    if (!loading && !loggedIn) {
+      navigate("/login");
+    }
+    return () => {
+      dispatch(clearErrors());
+      dispatch(loadDoctors());
+    };
+  }, [loading, loggedIn, navigate, dispatch]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

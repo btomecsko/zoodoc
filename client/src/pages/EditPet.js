@@ -4,15 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import styled from "styled-components";
 import Button from "../styles/Button";
-//import Error from "../styles/Error";
 import Input from "../styles/Input";
 import FormField from "../styles/FormField";
 import Label from "../styles/Label";
 import { useEffect } from "react";
 import { editPet } from "../actions/pets";
 
-const EditPet = () => {
-    const {pets} = useSelector(store => store.usersReducer)
+const EditPet = ({loading}) => {
+    const { loggedIn, pets } = useSelector(store => store.usersReducer)
     const [ formData, setFormData ] = useState({
         name: "",
         petType: "",
@@ -25,6 +24,9 @@ const EditPet = () => {
     const dispatch =  useDispatch();
 
     useEffect(() => {
+      if(!loading && !loggedIn) {
+        navigate('/login')
+      }
         const petToEdit = pets.find(pet => pet.id === parseInt(id));
         setFormData({
             name: petToEdit.name,
@@ -32,7 +34,7 @@ const EditPet = () => {
             age: petToEdit.age,
             image: petToEdit.image
             });
-    }, [id, pets]);
+    }, [loading, loggedIn, navigate, id, pets]);
 
     const handleChange = e => {
         const { name, value } = e.target;
