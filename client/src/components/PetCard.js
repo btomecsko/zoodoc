@@ -14,8 +14,7 @@ import { Link } from "react-router-dom";
 import { deletePet } from "../actions/pets";
   
 const PetCard = ({ pet }) => {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   
   const handleDeletePet = () => {
     dispatch(deletePet(pet.id))

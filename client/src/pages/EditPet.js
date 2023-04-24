@@ -12,29 +12,30 @@ import { useEffect } from "react";
 import { editPet } from "../actions/pets";
 
 const EditPet = () => {
-    const initialState = {
+    const {pets} = useSelector(store => store.usersReducer)
+    const [ formData, setFormData ] = useState({
         name: "",
         petType: "",
         age: "",
         image: ""
-      }
-    const pets  = useSelector(store => store.petsReducer);
-    const [ formData, setFormData ] = useState(initialState);
-    const id  = parseInt(useParams().id);
+    });
+
+    console.log(pets)
+    const { id }  = useParams();
     const navigate = useNavigate();
     const dispatch =  useDispatch();
 
     useEffect(() => {
-        if(pets.length > 0){
-            const pet = pets.find(pet => pet.id === id)
-            setFormData({
-                name: pet.name,
-                petType: pet.petType,
-                age: pet.age,
-                image: pet.image
-            })
-        }
-    }, [pets, id])
+        const petToEdit = pets.find(pet => pet.id === parseInt(id));
+        setFormData({
+            name: petToEdit.name,
+            petType: petToEdit.petType,
+            age: petToEdit.age,
+            image: petToEdit.image
+            });
+    }, [id, pets]);
+
+    console.log(formData)
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -52,7 +53,7 @@ const EditPet = () => {
     return (
         <Wrapper>
           <WrapperChild>
-            <h2>Edit Pet</h2>
+            <h2>Edit Profile</h2>
             <form onSubmit={handleSubmit}>
               <FormField>
                 <Label htmlFor="name">Name</Label>

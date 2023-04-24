@@ -15,7 +15,7 @@ const petsReducer = (state=initialState, action) => {
                 pets: [...state.pets, action.payload]
             };
         case "EDIT_PET":
-            const updatedPets = state.pets.map(pet => pet.id === action.payload.id ? action.payload : pet);
+            const updatedPets = state.pets?.map(pet => pet.id === action.payload.id ? action.payload : pet);
             return {
                 ...state,
                 pets: updatedPets
