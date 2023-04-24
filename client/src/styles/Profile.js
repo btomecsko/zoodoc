@@ -24,11 +24,11 @@ export const ProfileBodyWrapper = styled.div`
 
 export const ProfileBodyTitle = styled.h2`
   margin-top: 30px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   box-sizing: border-box;
   min-width: 0px;
   line-height: 1.2;
-  color: white;
+  color: black;
 `;
 
 export const ProfileTextBody = styled.p`
