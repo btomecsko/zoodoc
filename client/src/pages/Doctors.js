@@ -7,41 +7,14 @@ import styled from "styled-components";
 import DoctorCard from "../components/DoctorCard";
 
 const Doctors = () => {
-  //const {user} = useSelector((store) => store.usersReducer);
   const {doctors} = useSelector((store) => store.doctorsReducer);
   const dispatch = useDispatch();
-  
-  console.log(doctors)
 
   useEffect(() => {
     dispatch(loadDoctors())
   }, [dispatch]);
 
   const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
-  
-  // const loggedInDocs = () => {
-  //   const doctorCard = doctors?.map((doc, idx) => <DoctorCard key={idx} doctors={doc}/>)
-
-  //   return (
-  //     <>
-  //     <Logo>Veterinarians</Logo>
-  //     <CardContainer>
-  //       { doctorCard }
-  //     </CardContainer>
-  //     </>
-  //   )
-  // }
-
-  // const loggedOutDocs = () => {
-  //   return (
-  //     <>
-  //     <Logo>Our Veterinarians</Logo>
-  //     <CardContainer>
-  //       <h1>GENERAL INFO</h1>
-  //     </CardContainer>
-  //     </>
-  //   )
-  // }
 
   return (
     <Wrapper>

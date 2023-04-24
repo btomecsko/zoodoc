@@ -20,7 +20,6 @@ const EditPet = () => {
         image: ""
     });
 
-    console.log(pets)
     const { id }  = useParams();
     const navigate = useNavigate();
     const dispatch =  useDispatch();
@@ -35,11 +34,8 @@ const EditPet = () => {
             });
     }, [id, pets]);
 
-    console.log(formData)
-
     const handleChange = e => {
         const { name, value } = e.target;
-        console.log(value)
         setFormData({
           ...formData,
           [name]: value

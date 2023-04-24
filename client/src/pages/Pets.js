@@ -10,7 +10,6 @@ import { loadUser } from "../actions/users";
 
 const Pets = () => {
   const {pets} = useSelector(store => store.usersReducer)
-  console.log(pets)
 
   const dispatch = useDispatch();
 

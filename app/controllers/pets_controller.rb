@@ -1,12 +1,5 @@
 class PetsController < ApplicationController
 
-    skip_before_action :authorize, only: [:index, :show]
-
-    def index
-        pets = Pet.all
-        render json: pets, include: :appointments
-    end
-
     def show
         pet = find_pet
         render json: pet, include: :appointments

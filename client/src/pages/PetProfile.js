@@ -25,8 +25,6 @@ const PetProfile = () => {
       }, [dispatch, id]);
 
     const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format}</ProfileTextBody>)
-
-    console.log(petAppt)
     
     return(
         <Wrapper>
