@@ -32,3 +32,5 @@ This is a full-stack application focused on Veterinary Medicine that allows auth
 
 ### AddAppt
 ![AddAppt](ProjScreenshots/AddAppt.png)
+
+## Disclaimer: All images associated with the pets or doctors comes from Adobe through Google Search
