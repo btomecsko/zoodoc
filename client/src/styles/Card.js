@@ -28,10 +28,9 @@ export const CardImage = styled.div`
   background-image: url(${({ background }) => background});
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  background-size: cover;
+  background-size: 350px 210px;
   width: 350px;
   height: 210px;
-  object-fit: scale-down;
 `;
 
 export const CardTextWrapper = styled.div`
@@ -52,8 +51,8 @@ export const CardTextTitle = styled.h2`
 `;
 
 export const CardTextBody = styled.p`
-  color: #372e29;
-  font-size: 15px;
+  color: white;
+  font-size: 20px;
   font-weight: 300;
 `;
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     #filter to skip the authorization clause to allow a user to be created
-
+    skip_before_action :authorize, only: [:create]
     #GET /me
     def show
         render json: @current_user

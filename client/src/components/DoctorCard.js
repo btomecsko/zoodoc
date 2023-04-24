@@ -2,7 +2,8 @@ import {
   PhotoWrapper,
   CardImage,
   CardTextWrapper,
-  CardTextTitle
+  CardTextTitle,
+  CardTextBody
   } from "../styles/Card";
   import styled from "styled-components";
   
@@ -14,7 +15,8 @@ import {
         <CardImage background={doctors.image}/>
           <CardTextWrapper>
             <CardTextTitle>{ doctors.name }</CardTextTitle>
-            <CardTextTitle>{ doctors.specialty }</CardTextTitle>
+            <CardTextBody>{ doctors.location }</CardTextBody>
+            <CardTextBody>{ doctors.specialty }</CardTextBody>
           </CardTextWrapper>
         </PhotoWrapper>
       </Separator>
