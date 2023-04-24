@@ -20,6 +20,7 @@ const Pets = () => {
     dispatch(loadUser());
   }, [dispatch]);
   
+  console.log(pets)
   
   return (
     <Wrapper>

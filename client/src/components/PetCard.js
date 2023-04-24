@@ -20,7 +20,6 @@ const PetCard = ({ pet }) => {
     dispatch(deletePet(pet.id))
   }
 
-
     return (
       <Separator>
         <PhotoWrapper>
