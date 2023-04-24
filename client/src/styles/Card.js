@@ -44,7 +44,7 @@ export const CardBodyWrapper = styled.div`
 `;
 
 export const CardTextTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1.25rem;
   box-sizing: border-box;
   min-width: 0px;
   color: white;

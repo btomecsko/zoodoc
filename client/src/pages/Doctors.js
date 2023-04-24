@@ -27,7 +27,7 @@ const Doctors = () => {
 };
 
 const Wrapper = styled.section`
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 40px auto;
 `;
 
