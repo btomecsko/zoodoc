@@ -22,7 +22,6 @@ const App = () => {
   
   useEffect(() => {
     dispatch(loadUser())
-    //dispatch(loadDoctors())
   }, [dispatch]);
 
   return (
