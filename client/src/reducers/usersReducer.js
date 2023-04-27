@@ -23,6 +23,17 @@ const usersReducer = (state=intialState, action) => {
                 user: null,
                 loggedIn: false
             }
+        case "ADD_PET":
+            return {
+                ...state,
+                pets: [...state.pets, action.payload]
+            };
+        case "EDIT_PET":
+            const updatedPets = state.pets.map(pet => pet.id === action.payload.id ? action.payload : pet);
+            return {
+                ...state,
+                pets: updatedPets
+            };
         case "DELETE_PET":
             return {
                 ...state,

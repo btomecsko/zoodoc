@@ -52,9 +52,8 @@ export const addPet = (formData, navigate) => {
       })
         .then(resp => resp.json())
         .then(data => {
-          // dispatch an action for editing our blog
           const action = {
-            type: "EDIT_PETS",
+            type: "EDIT_PET",
             payload: data
           }
           dispatch(action);

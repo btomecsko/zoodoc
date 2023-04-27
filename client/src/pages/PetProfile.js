@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import styled from "styled-components";
 import { 
@@ -10,30 +10,25 @@ import {
     ProfileUpdate, 
     ProfileWrapper 
 } from "../styles/Profile";
-import { useEffect } from "react";
-import { loadPet } from "../actions/pets";
 import Button from "../styles/Button";
 
 const PetProfile = () => {
     const id  = parseInt(useParams().id);
-    const {pets} = useSelector(store => store.petsReducer)
-    const dispatch = useDispatch();
+    const {pets} = useSelector(store => store.usersReducer)
     const navigate = useNavigate();
 
-    useEffect(() => {
-        dispatch(loadPet(id))
-      }, [dispatch, id]);
+    const pet = pets.find(pet => pet.id === id)
 
-    const petAppt = pets.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format} with {appt.doctor.name}</ProfileTextBody>)
+    const petAppt = pet.appointments?.map(appt => <ProfileTextBody key={appt.id}>{appt.date_format} with {appt.doctor.name}</ProfileTextBody>)
     
     return(
         <Wrapper>
-            <Logo>{pets.name}</Logo>
+            <Logo>{pet.name}</Logo>
             <ProfileWrapper>
-                <ProfileTextWrapper>{pets.petType} <br/> {pets.age} years old</ProfileTextWrapper>
+                <ProfileTextWrapper>{pet.petType} <br/> {pet.age} years old</ProfileTextWrapper>
                 <ProfileBodyWrapper>
                     <ProfileBodyTitle>List of Appointments</ProfileBodyTitle>
-                    { pets.appointments?.length > 0 ? petAppt : <ProfileTextBody>No Appointments Scheduled</ProfileTextBody> }
+                    { pet.appointments?.length > 0 ? petAppt : <ProfileTextBody>No Appointments Scheduled</ProfileTextBody> }
                 </ProfileBodyWrapper>
                 <ProfileUpdate>
                 <Button variant="outline" onClick={() => navigate(`/pets/${ id }/edit`)}>Edit Profile</Button>
