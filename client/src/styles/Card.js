@@ -14,7 +14,7 @@ export const CardWrapper = styled.div`
 
 export const PhotoWrapper = styled.div`
   display: grid;
-  grid-template-columns: 350px;
+  grid-template-columns: 300px;
   grid-template-rows: 210px 100px 100px;
   grid-template-areas: "image" "text" "links";
   border-radius: 60px;
@@ -28,8 +28,8 @@ export const CardImage = styled.div`
   background-image: url(${({ background }) => background});
   border-top-left-radius: 60px;
   border-top-right-radius: 60px;
-  background-size: 350px 210px;
-  width: 350px;
+  background-size: 300px 210px;
+  width: 300px;
   height: 210px;
 `;
 
@@ -54,20 +54,6 @@ export const CardTextBody = styled.p`
   color: white;
   font-size: 20px;
   font-weight: 300;
-`;
-
-export const CardOpenWrapper = styled.div`
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background: #0e1a40;
-`;
-
-export const CardOpen = styled.div`
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  padding: 10px;
 `;
 
 export const CardLinkWrapper = styled.div`

@@ -42,9 +42,9 @@ const Logo = styled.h1`
 
 const CardContainer = styled.div`
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
   background: transparent;
   overflow: auto;
 `;
